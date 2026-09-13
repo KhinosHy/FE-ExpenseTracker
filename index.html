@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("udah load anjayy");
+        });
+    </script>
+<body>
+    <h1>expense</h1>
+    <hr>
+    <label>keterangan:</label>
+    <input type="text" id="description"><br><br>
+    <label>nominal:</label>
+    <input type="number" id="nominal"><br><br>
+    <button onclick="nambah()">tambah</button>
+    <hr>
+    <p>total transaksi: <span id="totalCount">0</span></p>
+    <p>total pengeluaran: Rp <span id="totalAmount">0</span></p>
+    <h2>riwayta</h2>
+    <ul id="expenseList"></ul>
+    <script src="script.js"></script>
+</body>
+</html>
