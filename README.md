@@ -1,5 +1,5 @@
-ini website untuk mencatat n menghitung pengeluaran, bisa ditambah, dan dihapus
-setiap data di pengeluaran ada ID, keterangan sama nominal
+ini website untuk mencatat n menghitung pengeluaran, bisa ditambah, dihapus
+setiap data dipengeluaran ada ID, keterangan, sama nominal
 abis ditambahin, data bakal muncul di bagian riwayat, bareng sama jumlah transaksi n total
 
 user juga bisa ngeapus transaksi pake tombol "hapus"

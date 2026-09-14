@@ -1,43 +1,35 @@
-expen = [];
-idlnjt = 1;
+let expen = [];
+let nextId = 1;
+
+const keterinp= document.getElementById("keterangan");
+const nominp = document.getElementById("nominal");
+const list = document.getElementById("explist");
 
 function nambah() {
-    desc = document.getElementById("description").value;
-    nominal = document.getElementById("nominal").value;
-    data = {
-        id: idlnjt,
-        description: desc,
-        nominal: Number(nominal)
-    };
-    idlnjt = idlnjt + 1;
-    expen.push(data);
-    document.getElementById("description").value = "";
-    document.getElementById("nominal").value = "";
+    expen.push({
+        id: nextId++,
+        description: keterinp.value,
+        nominal: Number(nominp.value)
+    });
+    keterinp.value = "";
+    nominp.value = "";
     biji();
 }
 function hapus(id) {
-    hasilFilter = [];
-    for (i = 0; i < expen.length; i++) {
-        if (expen[i].id != id) {
-            hasilFilter.push(expen[i]);
-        }
-    }
-    expen = hasilFilter;
+    expen = expen.filter(item => item.id !== id);
     biji();
 }
-function biji() {
-    list = document.getElementById("expenseList");
-    list.innerHTML = "";
-    total = 0;
-    for (i = 0; i < expen.length; i++) {
-        total = total + expen[i].nominal;
-        li = document.createElement("li");
-        li.innerHTML =
-            expen[i].description +" - Rp " +expen[i].nominal +
-            " <button onclick='hapus("+expen[i].id +")'>hapus</button>";
-        list.appendChild(li);
+list.addEventListener("click", e => {
+    if (e.target.matches("button")) {
+        hapus(Number(e.target.dataset.id));
     }
-    document.getElementById("totalCount").innerHTML = expen.length;
-    document.getElementById("totalAmount").innerHTML = total;
+});
+function biji() {
+    list.innerHTML = expen
+        .map(item => `<li>${item.description} - Rp ${item.nominal} <button data-id="${item.id}">hapus</button></li>`)
+        .join("");
+
+    document.getElementById("tottung").innerHTML = expen.length;
+    document.getElementById("totsil").innerHTML = expen.reduce((sum, item) => sum + item.nominal, 0);
 }
 biji();
